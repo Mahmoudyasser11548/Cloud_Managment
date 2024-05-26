@@ -1,0 +1,1 @@
+export type role = "SuperAdmin" | "Admin" | "Employee";
