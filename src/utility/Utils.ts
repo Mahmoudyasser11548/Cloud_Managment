@@ -1,17 +1,13 @@
-export const setCookie = (name: string, value: string, days: number) => {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = name + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/';
+export const setLocalStorageItem = (name: string, value: string) => {
+  localStorage.setItem(name, value);
 };
 
-export const getCookie = (name: string) => {
-  return document.cookie.split('; ').reduce((r, v) => {
-    const parts = v.split('=');
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, '');
+export const getLocalStorageItem = (name: string): string | null => {
+  return localStorage.getItem(name);
 };
 
-export const deleteCookie = (name: string) => {
-  setCookie(name, '', -1);
+export const deleteLocalStorageItem = (name: string) => {
+  localStorage.removeItem(name);
 };
-  
-export const isUserLoggedIn = () => !localStorage.getItem("userData");
+
+export const isUserLoggedIn = (): boolean => !localStorage.getItem("userData");

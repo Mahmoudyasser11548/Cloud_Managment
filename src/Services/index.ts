@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { getCookie, setCookie } from '../utility/Utils.ts';
+import { getLocalStorageItem, setLocalStorageItem } from '@utils';
 
 const baseURL = process.env.VITE_BASE_API_URL;
 
@@ -16,7 +16,7 @@ const api = axios.create({
 // Request interceptor
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = getLocalStorageItem('token');
 
     if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
@@ -44,8 +44,8 @@ api.interceptors.response.use(
       // Show toast notification
       toast.error(customError.errorMessage);
 
-      // Save error information in cookies
-      setCookie('api_error', JSON.stringify(customError), 1);
+      // Save error information in localStorage
+      setLocalStorageItem('api_error', JSON.stringify(customError));
 
       // Modify the response to include custom error details
       return Promise.reject(customError);

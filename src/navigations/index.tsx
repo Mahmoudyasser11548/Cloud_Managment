@@ -1,10 +1,11 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import {faHouse, faSpa, faTableColumns} from "@fortawesome/free-solid-svg-icons"
+import { faSpa, faTableColumns} from "@fortawesome/free-solid-svg-icons"
 import { ReactNode } from "react"
 import { useUser } from "../utility/hooks/useUser"
 import { useTranslation } from "react-i18next"
+import { FcLock, FcOrganization } from "react-icons/fc";
 
-interface NavigationsProps {
+export interface NavigationsProps {
   id: string
   title: string
   navLink?: string
@@ -25,37 +26,18 @@ export const navigations = () => {
 
   const arr = [
     {
-      id: "home",
-      title: t("Home"),
-      navLink: "/home",
-      icon: <FontAwesomeIcon icon={faHouse} fontSize={20} />
+      id: "firewall",
+      title: t("Firewall"),
+      navLink: "/firewall",
+      icon: <FcLock size={35}/>
     },
     {
-      id: "secondPage",
-      title: t("Second Page"),
-      navLink: "/second-page",
-      icon: <FontAwesomeIcon icon={faSpa} fontSize={20} />,
+      id: "home",
+      title: t("Data Grid"),
+      navLink: "/home",
+      icon: <FcOrganization size={35} />,
       permissions: "read_page"
     },
-    {
-      id: "dashboard",
-      title: t("Dashboard"),
-      icon: <FontAwesomeIcon icon={faTableColumns} fontSize={20} />,
-      children: [
-        // {
-        //   id: "home-1",
-        //   title: t("Home"),
-        //   navLink: "/home",
-        //   icon: <FontAwesomeIcon icon={faHouse} fontSize={20} />
-        // },
-        {
-          id: "secondPage-2",
-          title:  t("Second Page"),
-          navLink: "/second-page",
-          icon: <FontAwesomeIcon icon={faSpa} fontSize={20} />
-        },
-      ]
-    }
   ]
 
   const result = permission && permission.length > 0
@@ -70,3 +52,22 @@ export const navigations = () => {
 return result;
 
 }
+
+// {
+//   id: "dashboard",
+//   title: t("Dashboard"),
+//   icon: <FontAwesomeIcon icon={faTableColumns} fontSize={20} />,
+//   children: [
+//     // {
+//     //   id: "home-1",
+//     //   title: t("Home"),
+//     //   navLink: "/home",
+//     //   icon: <FontAwesomeIcon icon={faHouse} fontSize={20} />
+//     // },
+//     {
+//       id: "secondPage-2",
+//       title:  t("Second Page"),
+//       navLink: "/second-page",
+//       icon: <FontAwesomeIcon icon={faSpa} fontSize={10} />
+//     },
+//   ]

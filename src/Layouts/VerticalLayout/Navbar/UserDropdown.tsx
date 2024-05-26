@@ -21,6 +21,7 @@ const UserDropdown = () => {
         <MenuTrigger disableButtonEnhancement>
           <Button size="large" appearance="primary">
             <Persona
+              className='w-full'
               textPosition="before"
               name="Kevin Sturgis"
               presence={{ status: "available" }}

@@ -2,10 +2,10 @@ import { Button } from '@fluentui/react-components';
 import React, { useState } from 'react';
 import { ChevronDoubleLeftRegular, ChevronDoubleRightRegular, ChevronDownRegular, ChevronUpRegular } from "@fluentui/react-icons";
 import { LayoutProps } from "../types.ts";
-import { navigations } from '../../../navigations/index.tsx';
+import { NavigationsProps, navigations } from '../../../navigations/index.tsx';
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../../utility/hooks/StoreHooks/index.tsx';
-import { RootState } from '../../../Store';
+import { useAppSelector } from '@Hooks/StoreHooks';
+import { RootState } from '@store';
 
 const Sidebar = ({ toggleSidebar, setToggleSidebar }: LayoutProps) => {
   const [showSubItems, setShowSubItems] = useState<boolean[]>(new Array(navigations.length).fill(false));
@@ -41,7 +41,7 @@ const Sidebar = ({ toggleSidebar, setToggleSidebar }: LayoutProps) => {
         <Button appearance='subtle' className='p-1' icon={toggleIcom()} onClick={() => setToggleSidebar((prev) => !prev)} />
       </div>
       <ul className='list-items list-none'>
-        {navigations().map((item, index) => (
+        {navigations().map((item: NavigationsProps, index) => (
           <li key={index} className={`flex flex-col`}>
             <NavLink
               to={item.navLink}
@@ -70,7 +70,7 @@ const Sidebar = ({ toggleSidebar, setToggleSidebar }: LayoutProps) => {
                       }
                     >
                       {subItem.icon}
-                      {toggleSidebar && <span className='text-base ms-3'>{subItem.title}</span>}
+                      {toggleSidebar && <span className='text-sm ms-3'>{subItem.title}</span>}
                     </NavLink>
                   </li>
                 ))}

@@ -2,11 +2,11 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import routes from "./routes";
-import VerticalLayout from "../Layouts/VerticalLayout";
-import BlankLayout from "../Layouts/BlankLayout";
-import { isUserLoggedIn } from "../utility/Utils.ts";
-import { Permission } from "../configs/permissions.ts";
-import { useUser } from "../utility/hooks/useUser.tsx";
+import VerticalLayout from "@layouts/VerticalLayout";
+import BlankLayout from "@layouts/BlankLayout";
+import { isUserLoggedIn } from "@utils";
+import { Permission } from "@configs/permissions.ts";
+import { useUser } from "@Hooks/useUser.tsx";
 
 export const AppRouter = () => {
   return (

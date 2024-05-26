@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { FluentProvider, webDarkTheme, webLightTheme } from '@fluentui/react-components';
-import { useAppSelector } from '../hooks/StoreHooks';
-import { RootState } from '../../Store';
+import { useAppSelector } from '@Hooks/StoreHooks';
+import { RootState } from '@store';
 
 interface FluentUIContextProps {
   children: ReactNode;

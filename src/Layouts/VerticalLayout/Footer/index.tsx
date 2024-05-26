@@ -6,7 +6,7 @@ const Footer = ({toggleSidebar}: LayoutProps) => {
   const {t} = useTranslation();
 
   return (
-    <footer className={`footer fixed ${toggleSidebar ? "ps-[270px]" : "ps-[80px]"} transition-all bottom-0 w-full p-4 flex justify-between items-center`}>
+    <footer className={`footer fixed pt-6 ${toggleSidebar ? "ps-[270px]" : "ps-[80px]"} transition-all bottom-0 w-full p-4 flex justify-between items-center`}>
       <span className="container block md:inline-block mt-25">
         {t("COPYRIGHT")} © {new Date().getFullYear()}
         <a href="#" target="_blank" rel="noopener noreferrer" className='text-colorBrandForegroundLink'>

@@ -8,10 +8,10 @@ import {
     MenuTrigger,
 } from "@fluentui/react-components";
 import { LocalLanguageRegular } from "@fluentui/react-icons";
-import { useAppDispatch } from '../../../utility/hooks/StoreHooks';
-import { useDirection } from '../../../utility/hooks/useDirection';
+import { useAppDispatch } from '@Hooks/StoreHooks';
+import { useDirection } from '@Hooks/useDirection';
 import { useTranslation } from 'react-i18next';
-import { setLanguage } from '../../../Store/app';
+import { setLanguage } from '@store/app';
 
 const LangsDropdown = () => {
   const {i18n} = useTranslation()

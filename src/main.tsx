@@ -19,18 +19,18 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Router>
       <Provider store={store}>
-        <Suspense fallback={<FallbackLoading />}>
-          <AbilityContext.Provider value={new Permission()}>
-            <I18nextProvider i18n={i18n}>
-              <FluentUIContext>
-                <DirectionProvider>
-                    <App />
-                    <ToastContainer />
-                </DirectionProvider>
-              </FluentUIContext>
-            </I18nextProvider>
-          </AbilityContext.Provider>
-        </Suspense>
+        <FluentUIContext> 
+          <Suspense fallback={<FallbackLoading />}>
+            <AbilityContext.Provider value={new Permission()}>
+              <I18nextProvider i18n={i18n}>
+                  <DirectionProvider>
+                      <App />
+                      <ToastContainer />
+                  </DirectionProvider>
+              </I18nextProvider>
+            </AbilityContext.Provider>
+          </Suspense>
+        </FluentUIContext>
       </Provider>
     </Router>
   </React.StrictMode>,

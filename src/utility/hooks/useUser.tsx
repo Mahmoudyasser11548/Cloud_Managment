@@ -1,10 +1,10 @@
 //** React Imports
 
 import { useEffect, useState } from "react";
-import { RootState } from "../../Store";
-import { Permission } from "../../configs/permissions";
-import { role } from "../../configs/roles";
-import { useAppSelector } from "./StoreHooks";
+import { RootState } from "@store";
+import { Permission } from "@configs/permissions";
+import { role } from "@configs/roles";
+import { useAppSelector } from "@Hooks/StoreHooks";
 
 // ** Store & Actions
 

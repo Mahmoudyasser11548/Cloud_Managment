@@ -1,6 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react';
-import { useAppSelector } from '../hooks/StoreHooks';
-import { RootState } from '../../Store';
+import { useAppSelector } from '@Hooks/StoreHooks';
+import { RootState } from '@store';
 
 type Direction = 'ltr' | 'rtl';
 

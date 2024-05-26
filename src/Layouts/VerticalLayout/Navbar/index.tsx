@@ -4,9 +4,9 @@ import LangsDropdown from './LangsDropdown'
 import { DarkThemeRegular } from "@fluentui/react-icons";
 import UserDropdown from './UserDropdown';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '../../../utility/hooks/StoreHooks';
-import { changeTheme } from '../../../Store/app';
-import { RootState } from '../../../Store';
+import { useAppDispatch, useAppSelector } from '@Hooks/StoreHooks';
+import { changeTheme } from '@store/app';
+import { RootState } from '@store';
 
 const Navbar = () => {
   const {t} = useTranslation();
@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='navbar fixed top-0 w-full h-[60px] bg-colorBrandBackground flex items-center'>
+    <div className='navbar fixed top-0 w-full h-[60px] bg-colorBrandBackground flex items-center z-50'>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="logo-link">
           <a href="/">
