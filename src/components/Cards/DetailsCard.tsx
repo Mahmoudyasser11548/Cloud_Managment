@@ -1,8 +1,9 @@
 import { Button, Card } from '@fluentui/react-components'
 import React, { ReactNode } from 'react'
 import { useTranslation } from 'react-i18next'
-import { ChevronLeftRegular } from '@fluentui/react-icons';
+import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
 import { useNavigate } from 'react-router-dom';
+import { getLocalStorageItem } from '@utils';
 
 interface DetailsCardProps {
   title: string
@@ -18,7 +19,7 @@ const DetailsCard = ({title, body}: DetailsCardProps) => {
       <Card>
         <div className="header px-6 py-4 flex items-center">
           <div className="">
-            <Button appearance='subtle' icon={<ChevronLeftRegular />} onClick={() => navigate(-1)}/>
+            <Button appearance='subtle' icon={getLocalStorageItem("language") === "en" ? <ChevronLeftRegular /> : <ChevronRightRegular />} onClick={() => navigate(-1)}/>
           </div>
           <h1 className='font-bold ms-2'>{t(title)}</h1>
         </div>
