@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Button } from '@fluentui/react-components';
-import { CustomDialog, DatePickerField, DetailsCard, ImageField, InputField, PDFField, PasswordField, PhoneField, SubmitButton, SwitchField, VideoField } from '@components/index';
+import { DatePickerField, DetailsCard, Dialog, ImageField, InputField, MultiSelectField, PDFField, PasswordField, PhoneField, SelectField, SubmitButton, SwitchField, VideoField } from '@components/index';
 
 // const options = [
 //   { key: 'option1', text: 'Option 1' },
@@ -25,7 +24,9 @@ const Details = () => {
       url: null,
       readUrl: null,
     },
-    video: ""
+    video: "",
+    option: "",
+    multioption: ""
   }
 
   const validationSchema = Yup.object({
@@ -81,11 +82,29 @@ const Details = () => {
                   enableTime={true}
                 />
                 <PhoneField name="phoneNumber" label="Phone Number" />
-                {/* <SelectField
-                  name="selectField"
-                  label="Select Field"
-                  options={options}
-                /> */}
+                <SelectField
+                  name="option"
+                  label="Select an option"
+                  options={[
+                    { id: '1', name: {ar: "أختيار 1", en: 'Option 1'} },
+                    { id: '2', name: {ar: "أختيار 2", en: 'Option 2'} },
+                    { id: '3', name: {ar: "أختيار 3", en: 'Option 3'} },
+                  ]}
+                  keyValue="id"
+                  title="name"
+                />
+                <MultiSelectField
+                  name="multioption"
+                  label="Select an option"
+                  options={[
+                    { id: '1', name: {ar: "أختيار 1", en: 'Option 1'} },
+                    { id: '2', name: {ar: "أختيار 2", en: 'Option 2'} },
+                    { id: '3', name: {ar: "أختيار 3", en: 'Option 3'} },
+                  ]}
+                  keyValue="id"
+                  title="name"
+                />
+
                 <SwitchField
                   name="toogle"
                   label="Switch Field"
@@ -110,7 +129,7 @@ const Details = () => {
                 />
               </div>
               <SubmitButton />
-              <CustomDialog 
+              <Dialog 
                 title="Dialog Example"  
                 btnLabel='Open' 
                 body={

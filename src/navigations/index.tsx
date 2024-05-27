@@ -3,7 +3,7 @@ import { faSpa, faTableColumns} from "@fortawesome/free-solid-svg-icons"
 import { ReactNode } from "react"
 import { useUser } from "../utility/hooks/useUser"
 import { useTranslation } from "react-i18next"
-import { FcLock, FcOrganization } from "react-icons/fc";
+import { FcHome, FcLock, FcOrganization } from "react-icons/fc";
 
 export interface NavigationsProps {
   id: string
@@ -26,17 +26,17 @@ export const navigations = () => {
 
   const arr = [
     {
+      id: "home",
+      title: t("Home"),
+      navLink: "/home",
+      icon: <FcHome size={35} />,
+      permissions: "read_page"
+    },
+    {
       id: "firewall",
       title: t("Firewall"),
       navLink: "/firewall",
       icon: <FcLock size={35}/>
-    },
-    {
-      id: "home",
-      title: t("Data Grid"),
-      navLink: "/home",
-      icon: <FcOrganization size={35} />,
-      permissions: "read_page"
     },
   ]
 

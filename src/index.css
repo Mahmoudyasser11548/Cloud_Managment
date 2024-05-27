@@ -402,4 +402,7 @@ span.fui-Avatar {
   .special-label {
     display: none !important;
   }
+  input {
+    width: 100% !important;
+  }
 }

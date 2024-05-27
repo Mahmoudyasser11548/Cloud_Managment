@@ -1,33 +1,101 @@
-import { Card } from '@fluentui/react-components'
-import React, { ReactNode } from 'react'
-import { useTranslation } from 'react-i18next'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Breadcrumb, BreadcrumbButton, BreadcrumbDivider, BreadcrumbItem, Button, Text } from '@fluentui/react-components';
+import { useTranslation } from "react-i18next";
+import { TFunction } from "i18next";
+import { FcFilledFilter } from "react-icons/fc";
 
-interface PrimaryCardProps {
-  title: string
-  actions: ReactNode
-  body: ReactNode
+interface Breadcrumb {
+  label: string;
+  route: string;
+  isActive: boolean;
 }
 
-const PrimaryCard = ({title, actions, body}: PrimaryCardProps) => {
-  const {t} = useTranslation()
+interface HeaderProps {
+  breadCrumbs: Breadcrumb[];
+  title: string;
+  t: TFunction<"translation", undefined>
+}
+
+const Header = ({ breadCrumbs = [], title = "", t }: HeaderProps) => {
+
+  const breadcrumbItems = breadCrumbs.map(({ label, route, isActive }, index, arr) => (
+    <BreadcrumbItem key={index}>
+      {isActive ? (
+        <BreadcrumbButton current>{t(label)}</BreadcrumbButton>
+      ) : (
+        <BreadcrumbButton href={route}>{t(label)}</BreadcrumbButton>
+      )}
+      {index !== arr.length - 1 ? <BreadcrumbDivider /> : ""}
+    </BreadcrumbItem>
+  ));
 
   return (
-    <>
-      <Card>
-        <div className="header px-6 py-6 flex items-center justify-between">
-          <h1 className='font-bold m-0'>{t(title)}</h1>
-          <div className="actions flex items-center justify-between space-x-2">
-            {actions}
-          </div>
-        </div>
-      </Card>
-      <Card className='my-4'>
-        <div className='px-6 py-4'>
-          {body}
-        </div>
-      </Card>
-    </>
-  )
+    <div style={{ padding: '10px 20px' }}>
+      <div className="p-2 border rounded flex items-center justify-between">
+        <span className="font-semibold text-3xl">{t(title)}</span>
+        <Breadcrumb>
+          {breadcrumbItems}
+        </Breadcrumb>
+      </div>
+    </div>
+  );
+};
+
+interface FilterProps {
+  filter: React.ReactNode;
+  addButton: React.ReactNode;
+  listCount: string;
+  title: string;
+  t: TFunction<"translation", undefined>
 }
 
-export default PrimaryCard
+const Filter = ({ filter, addButton, listCount = "", t }: FilterProps) => {
+  const [collapsed, setCollapsed] = useState(false);
+  const toggleCollapse = () => setCollapsed((prev) => !prev);
+
+  return (
+    <div style={{ padding: '10px 20px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Text size={600}>
+          {listCount}
+        </Text>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <Button onClick={toggleCollapse} icon={<FcFilledFilter />}>
+            {t("filter")}
+          </Button>
+          {addButton}
+        </div>
+      </div>
+      {collapsed && <div>{filter}</div>}
+    </div>
+  );
+};
+
+const Body = ({ body }: { body: React.ReactNode }) => (
+  <div style={{ padding: '10px 20px' }}>{body}</div>
+);
+
+interface PrimaryCardProps {
+  title: string;
+  filter: React.ReactNode;
+  body: React.ReactNode;
+  addButton: React.ReactNode;
+  listCount: string;
+  breadCrumbs: Breadcrumb[];
+}
+
+const PrimaryCard = ({ title, filter, body, addButton, listCount, breadCrumbs }: PrimaryCardProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <div style={{ width: '100%', border: '1px solid #ccc', borderRadius: 4, boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+      <Header breadCrumbs={breadCrumbs} title={title} t={t} />
+      {filter && <Filter filter={filter} addButton={addButton} listCount={listCount} title={title} t={t} />}
+      <Body body={body} />
+    </div>
+  );
+};
+
+export default PrimaryCard;
+export { Header };

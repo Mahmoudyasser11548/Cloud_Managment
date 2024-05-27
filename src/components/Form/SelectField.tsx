@@ -1,68 +1,85 @@
-import React from 'react';
-import { useField } from 'formik';
-import { Dropdown, Field, Option } from '@fluentui/react-components';
+import React from "react";
+import { useField } from "formik";
+import { Dropdown, Label, Option, DropdownProps } from "@fluentui/react-components";
+import { useLanguage } from "@Hooks/useLanguage";
 
-interface SelectFieldProps {
+interface SelectFieldProps extends DropdownProps {
+  permission?: string;
   label?: string;
-  name: string;
-  options: { key: string; text: string }[];
+  label_key?: string;
+  withFeedbackLabel?: boolean;
+  customFeedbackLabel?: string;
+  showCustomFeedbackLable?: boolean;
+  options: any[];
   keyValue?: string;
-  getOptionLabel?: (option: { key: string; text: string }) => string;
-  callBack?: (value: any) => void;
+  title?: string;
+  getOptionLabel?: (option: any) => string;
+  callBack?: (data: { name: string; value: any }) => void;
 }
 
 const SelectField: React.FC<SelectFieldProps> = ({
+  permission,
   label,
-  name,
+  label_key,
+  withFeedbackLabel = true,
+  customFeedbackLabel,
+  showCustomFeedbackLable = false,
   options,
-  keyValue,
+  keyValue = "id",
+  title = "name",
   getOptionLabel,
   callBack = () => {},
+  ...props
 }) => {
-  const [field, meta, helpers] = useField(name);
+  const { getTrans } = useLanguage();
+  const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;
+  const { onChange, value, ...fieldProps } = field;
 
-  const handleChange = (event: React.FormEvent<HTMLDivElement>, option?: Option | null) => {
-    if (option) {
-      helpers.setValue(option.key as string);
-      callBack(option);
-    } else {
-      helpers.setValue('');
-      callBack(null);
-    }
-  };
+  const selectedObj = options.find((a) => keyValue ? a[keyValue] === value : a === value);
 
-  const selectedObj =
-    options &&
-    options?.find((a) =>
-      keyValue ? a[keyValue] === field.value : a === field.value,
-    );
-
-  const handleGetLabel = (o) => {
+  const handleGetLabel = (o: any) => {
     if (getOptionLabel) {
       return getOptionLabel(o);
     }
     if (typeof o[title] === "object") {
-      return o[title][locale.code];
+      return getTrans(o[title]);
     }
     return o[title];
   };
 
-
   return (
-    <Field
-      label={label}
-      validationState={touched && error ? 'error' : undefined}
-      validationMessage={touched && error ? error : undefined}
-      style={{ marginBottom: '1rem' }}
-    >
-      <Dropdown
-        selectedKey={field.value}
-        onChange={handleChange}
-        options={options}
-        placeholder="Select an option"
-      />
-    </Field>
+    <>
+      <div style={{ marginBottom: '1rem' }} className="flex flex-col">
+        {label && (
+          <Label htmlFor={field.name}>
+            {label}
+          </Label>
+        )}
+        <Dropdown
+          placeholder="Select an option"
+          selectedKey={selectedObj ? selectedObj[keyValue] : undefined}
+          clearable
+          onChange={(_, option: any) => {
+            helpers.setTouched(true);
+            if (option) {
+              helpers.setValue(option.key);
+              callBack({ name: field.name, value: option.key });
+              return;
+            }
+            callBack({ name: field.name, value: "" });
+            helpers.setValue("");
+          }}
+          {...props}
+          {...fieldProps}
+        >
+          {options.map((option) => (
+            <Option key={option[keyValue]}>{handleGetLabel(option)}</Option>
+          ))}
+        </Dropdown>
+        {error && touched && <div style={{ color: 'red', marginTop: '0.5rem' }}>{error}</div>}
+      </div>
+    </>
   );
 };
 

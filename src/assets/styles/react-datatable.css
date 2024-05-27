@@ -1,0 +1,73 @@
+.react-dataTable {
+  border-radius: 0;
+  .rdt_TableHead {
+    .rdt_TableHeadRow {
+      background-color: #e0e0e0;
+      border-top: 1px solid;
+      border-color: #f5f5f5;
+      min-height: 0;
+      height: 38px;
+
+      .rdt_TableCol {
+        padding: 0.72rem 1.5rem;
+        .rdt_TableCol_Sortable {
+          font-weight: bold;
+          font-style: 0.857rem;
+          letter-spacing: 0.5px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  .rdt_TableBody {
+    .rdt_TableRow {
+      border-radius: 5px;
+      box-shadow: 2px 4px 8px 2px #e0e0e0;
+
+      .rdt_TableCell {
+        height: 50px;
+        padding: 0.72rem 1.5rem;
+
+        .column-action {
+          svg {
+            stroke: #6e6b7b;
+          }
+        }
+      }
+    }
+  }
+
+  .react-paginate {
+    &.separated-pagination {
+      .page-item:first-child .page-link,
+      .page-item:last-child .page-link {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.rdt_Pagination {
+  select {
+    min-width: 30px;
+    &:focus,
+    &:active {
+      outline: 0;
+    }
+  }
+}
+
+.dataTable-filter {
+  max-width: 220px;
+}
+
+.dataTable-select {
+  width: 5rem;
+  &:not([multiple="multiple"]) {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    background-position: calc(100% - 12px) 10px, calc(100% - 20px) 12px, 100% 0;
+    background-size: 10px 10px, 10px 10px;
+  }
+}

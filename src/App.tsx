@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import {AppRouter} from "./Router/AppRouter"
 function App() {
 
   return (
     <>
-      <AppRouter />
+      <Suspense fallback={null}>
+        <AppRouter />
+      </Suspense>
     </>
   )
 }
