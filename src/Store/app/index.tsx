@@ -7,7 +7,7 @@ interface AppState {
   }
 const initialState: AppState = {
     theme: "light",
-    language: 'en',
+    language: localStorage.getItem("language") || 'en',
     direction: localStorage.getItem("direction") || 'ltr',
 }
 

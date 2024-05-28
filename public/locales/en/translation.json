@@ -11,6 +11,14 @@
     "No Data to Display": "No Data to Display",
     "Loading": "Getting things ready ...",
     "search": "Search",
-    "filter": "Filter"
+    "filter": "Filter",
+    "login": "Login",
+    "Enter your email": "Enter your email",
+    "Enter your password": "Enter your password",
+    "Email": "Email",
+    "Password": "Password",
+    "Invalid email address": "Invalid email address",
+    "Email is required": "Email is required",
+    "Password is required": "Password is required"
   }
   

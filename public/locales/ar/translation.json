@@ -10,6 +10,14 @@
     "Save": "حفظ",
     "No Data to Display": "لا يوجد  بيانات للعرض",
     "Loading": "جار التحميل",
-    "search": "بحث"
+    "search": "بحث",
+    "login": "تسجيل الدخول",
+    "Enter your email": "أدحل البريد لديك",
+    "Enter your password": "أدخل كلمه المرور لديك",
+    "Email": "البريد الأليكترونى",
+    "Password":"كلمة المرور",
+    "Invalid email address": "البريد الأليكترونى غير صحيح",
+    "Email is required": "البريد الألكترونى مطلوب",
+    "Password is required": "كلمه المرور غير صحيحه"
 }
   
