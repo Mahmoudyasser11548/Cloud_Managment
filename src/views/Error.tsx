@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Error404 = () => {
+const Error = () => {
   return (
 
       <div className="flex h-screen items-center justify-center ">
@@ -15,4 +15,4 @@ const Error404 = () => {
   )
 }
 
-export default Error404
+export default Error
