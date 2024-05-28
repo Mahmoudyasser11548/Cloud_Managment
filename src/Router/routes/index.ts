@@ -2,7 +2,8 @@ import { lazy } from "react";
 
 const Home = lazy(() => import("../../views/Home"));
 const Login = lazy(() => import("../../views/Login"));
-const Error = lazy(() => import("../../views/Error"));
+const Error404 = lazy(() => import("../../views/Error404"));
+const Error403 = lazy(() => import("../../views/Error403"));
 const NotAuthorized = lazy(() => import("../../views/NotAuthorized"));
 const SecondPage = lazy(() => import("../../views/SecondPage"));
 
@@ -38,7 +39,14 @@ const routes = [
   },
   {
     path: "*",
-    element: Error,
+    element: Error404,
+    meta: {
+      layout: "blank",
+    },
+  },
+  {
+    path: "/Error403",
+    element: Error403,
     meta: {
       layout: "blank",
     },
