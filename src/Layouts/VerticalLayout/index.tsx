@@ -13,7 +13,7 @@ const VerticalLayout = ({children}: VerticalLayoutProps) => {
   return (
     <div className='relative'>
       <Navbar />
-      <main className={`container content absolute top-[60px] w-full overflow-hidden ${toggleSidebar ? "ps-[270px]" : "ps-[80px]"} transition-all p-4 shadow-inner`} style={{ maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }}>
+      <main className={`content absolute top-[60px] w-full overflow-hidden ${toggleSidebar ? "ps-[270px]" : "ps-[80px]"} transition-all p-4 shadow-inner`} style={{ maxHeight: 'calc(100vh - 100px)', overflowY: 'auto' }}>
         {children}
       </main>
       <Sidebar toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />

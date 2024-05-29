@@ -59,87 +59,96 @@ const Details = () => {
           >
           {() => (
             <Form>
-              <div>
-                <InputField
-                  name="name"
-                  label="Name"
-                  placeholder="Enter your name"
-                />
-                <InputField
-                  name="email"
-                  label="Email"
-                  placeholder="Enter your email"
-                />
-                <PasswordField
-                  name="password"
-                  label="Password"
-                  placeholder="Enter your password"
-                />
-                <DatePickerField
-                  name="date"
-                  label="Date"
-                  placeholder="Select date"
-                  enableTime={true}
-                />
-                <PhoneField name="phoneNumber" label="Phone Number" />
-                <SelectField
-                  name="option"
-                  label="Select an option"
-                  options={[
-                    { id: '1', name: {ar: "أختيار 1", en: 'Option 1'} },
-                    { id: '2', name: {ar: "أختيار 2", en: 'Option 2'} },
-                    { id: '3', name: {ar: "أختيار 3", en: 'Option 3'} },
-                  ]}
-                  keyValue="id"
-                  title="name"
-                />
-                <MultiSelectField
-                  name="multioption"
-                  label="Select an option"
-                  options={[
-                    { id: '1', name: {ar: "أختيار 1", en: 'Option 1'} },
-                    { id: '2', name: {ar: "أختيار 2", en: 'Option 2'} },
-                    { id: '3', name: {ar: "أختيار 3", en: 'Option 3'} },
-                  ]}
-                  keyValue="id"
-                  title="name"
-                />
-
-                <SwitchField
-                  name="toogle"
-                  label="Switch Field"
-                />
-                <ImageField 
-                  name='img'
-                  mode='add'
-                  width={200}
-                  height={200}
-                />
-                <PDFField 
-                  name='pdfFile'
-                  mode='add'
-                  width={200}
-                  height={200}
-                />
-                <VideoField  
-                  name='video'
-                  mode='add'
-                  width={200}
-                  height={200}
+              <div className='mb-4'>
+                <Dialog 
+                  title="Dialog Example"  
+                  btnLabel='Open' 
+                  body={
+                    <>
+                      <h1>Hello</h1>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro ipsam in dicta?</p>
+                    </>
+                  } 
+                  confirmation={handleConfirmAction}
                 />
               </div>
-              <SubmitButton />
-              <Dialog 
-                title="Dialog Example"  
-                btnLabel='Open' 
-                body={
-                  <>
-                    <h1>Hello</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro ipsam in dicta?</p>
-                  </>
-                } 
-                confirmation={handleConfirmAction}
-              />
+              <div className='flex justify-between space-x-8'>
+                <div className='basis-10/12'>
+                  <InputField
+                    name="name"
+                    label="Name"
+                    placeholder="Enter your name"
+                  />
+                  <InputField
+                    name="email"
+                    label="Email"
+                    placeholder="Enter your email"
+                  />
+                  <PasswordField
+                    name="password"
+                    label="Password"
+                    placeholder="Enter your password"
+                  />
+                  <DatePickerField
+                    name="date"
+                    label="Date"
+                    placeholder="Select date"
+                    enableTime={true}
+                  />
+                  <PhoneField name="phoneNumber" label="Phone Number" />
+                  <SelectField
+                    name="option"
+                    label="Select an option"
+                    options={[
+                      { id: '1', name: {ar: "أختيار 1", en: 'Option 1'} },
+                      { id: '2', name: {ar: "أختيار 2", en: 'Option 2'} },
+                      { id: '3', name: {ar: "أختيار 3", en: 'Option 3'} },
+                    ]}
+                    keyValue="id"
+                    title="name"
+                  />
+                  <MultiSelectField
+                    name="multioption"
+                    label="Select an option"
+                    options={[
+                      { id: '1', name: {ar: "أختيار 1", en: 'Option 1'} },
+                      { id: '2', name: {ar: "أختيار 2", en: 'Option 2'} },
+                      { id: '3', name: {ar: "أختيار 3", en: 'Option 3'} },
+                    ]}
+                    keyValue="id"
+                    title="name"
+                  />
+
+                  <SwitchField
+                    name="toogle"
+                    label="Switch Field"
+                  />
+                </div>
+                <div className='basis-2/12'>
+                  <ImageField 
+                    name='img'
+                    mode='add'
+                    width={200}
+                    height={200}
+                  />
+                  <PDFField 
+                    name='pdfFile'
+                    mode='add'
+                    width={200}
+                    height={200}
+                  />
+                  <VideoField  
+                    name='video'
+                    mode='add'
+                    width={200}
+                    height={200}
+                  />
+                </div>
+              </div>
+              <div className='my-4'>
+                <SubmitButton />
+              </div>
+              
             </Form>
           )}
         </Formik>
