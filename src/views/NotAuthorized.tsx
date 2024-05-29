@@ -1,10 +1,11 @@
 import React from 'react'
+import notAuthImg from "../assets/imgs/notauth.jpg"
 
 const NotAuthorized = () => {
   return (
 
     <div className=" flex h-screen items-center justify-center">
-      <img src='imgs/notauth.jpg' alt='Not Found' />
+      <img src={notAuthImg} alt='Not Found' />
       <div>
         <h1 className="font-bold " >403- Uh-oh, you do not have access.</h1>
         <p className=" font-bold mb-3">Your account is not authorized to view this page.</p>
