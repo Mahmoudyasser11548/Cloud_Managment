@@ -11,10 +11,11 @@ import {
 } from "@fluentui/react-components";
 import { SignOutRegular } from "@fluentui/react-icons";
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 
 const UserDropdown = () => {
   const {t} = useTranslation()
-
+  const navigate = useNavigate();
   return (
     <div>
       <Menu>
@@ -31,7 +32,7 @@ const UserDropdown = () => {
         </MenuTrigger>
         <MenuPopover>
           <MenuList >
-            <MenuItem icon={<SignOutRegular />}>{t("Logout")}</MenuItem>
+            <MenuItem icon={<SignOutRegular />} onClick={() => navigate("/login")} >{t("Logout")}</MenuItem>
           </MenuList>
         </MenuPopover>
       </Menu>
