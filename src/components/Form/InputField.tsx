@@ -9,7 +9,7 @@ interface InputFieldProps {
   type?: string;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, placeholder, ...props }) => {
+const InputField = ({ label, placeholder, ...props }: InputFieldProps) => {
   const [field, meta] = useField(props);
   const { touched, error } = meta;
 

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import {AppRouter} from "./Router/AppRouter"
-function App() {
 
+function App() {
   return (
     <>
       <Suspense fallback={null}>

@@ -17,7 +17,7 @@ interface MultiSelectFieldProps extends DropdownProps {
   callBack?: (data: { name: string; value: any }) => void;
 }
 
-const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
+const MultiSelectField = ({
   permission,
   label,
   label_key,
@@ -30,7 +30,7 @@ const MultiSelectField: React.FC<MultiSelectFieldProps> = ({
   getOptionLabel,
   callBack = () => {},
   ...props
-}) => {
+}: MultiSelectFieldProps) => {
   const { getTrans } = useLanguage();
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;

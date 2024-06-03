@@ -11,7 +11,7 @@ interface PasswordFieldProps {
   name: string;
 }
 
-const PasswordField: React.FC<PasswordFieldProps> = ({ label, placeholder, name }) => {
+const PasswordField = ({ label, placeholder, name }: PasswordFieldProps) => {
   const [field, meta] = useField(name);
   const { touched, error } = meta;
   const [showPassword, setShowPassword] = useState(false);

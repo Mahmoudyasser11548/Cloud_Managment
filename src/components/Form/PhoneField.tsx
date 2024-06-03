@@ -9,7 +9,7 @@ interface PhoneFieldProps {
   name: string;
 }
 
-const PhoneField: React.FC<PhoneFieldProps> = ({ label, name }) => {
+const PhoneField = ({ label, name }: PhoneFieldProps) => {
   const [field, meta, helpers] = useField(name);
   const { touched, error } = meta;
 

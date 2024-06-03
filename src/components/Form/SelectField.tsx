@@ -17,7 +17,7 @@ interface SelectFieldProps extends DropdownProps {
   callBack?: (data: { name: string; value: any }) => void;
 }
 
-const SelectField: React.FC<SelectFieldProps> = ({
+const SelectField = ({
   permission,
   label,
   label_key,
@@ -30,7 +30,7 @@ const SelectField: React.FC<SelectFieldProps> = ({
   getOptionLabel,
   callBack = () => {},
   ...props
-}) => {
+}: SelectFieldProps) => {
   const { getTrans } = useLanguage();
   const [field, meta, helpers] = useField(props);
   const { touched, error } = meta;

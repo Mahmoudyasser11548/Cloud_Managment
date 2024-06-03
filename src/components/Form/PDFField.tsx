@@ -15,7 +15,7 @@ interface PDFFieldProps {
   initialValue?: string;
 }
 
-const PDFField: React.FC<PDFFieldProps> = ({
+const PDFField = ({
   name,
   displayName,
   mode,
@@ -26,7 +26,7 @@ const PDFField: React.FC<PDFFieldProps> = ({
   enableRemove = true,
   initialValue = "",
   ...props
-}) => {
+}: PDFFieldProps) => {
   const { setFieldValue } = useFormikContext();
   const [field, meta] = useField(name);
 

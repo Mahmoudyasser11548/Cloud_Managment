@@ -1,5 +1,5 @@
 // AppRouter.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import routes from "./routes";
 import VerticalLayout from "@layouts/VerticalLayout";
