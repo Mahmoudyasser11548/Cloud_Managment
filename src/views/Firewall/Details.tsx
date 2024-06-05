@@ -38,7 +38,15 @@ const Details = () => {
 
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [loading, setloading] = useState(false)
+  const [items, setItems] = useState([]);
 
+  const search = (query: any) => {
+    setItems(options.filter((item) =>
+      item.label.toLowerCase().includes(query.toLowerCase())
+    ));
+  }
+  console.log(items)
+  
   const handleCloseDialog = () => {
     setDialogOpen(false);
   };
@@ -90,9 +98,9 @@ const Details = () => {
                     <AutoCompleteInput
                       label="Autocomplete"
                       name="autoCompleteValue"
-                      options={options}
+                      options={items}
                       optionLabel="label"
-                      callBack={(query) => console.log(query)}
+                      callBack={(query) => search(query)}
                     />
                     <ChipsField
                       name='ips'
